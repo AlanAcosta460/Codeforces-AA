@@ -2,21 +2,16 @@
 using namespace std;
 
 int main() {
-    int n, flag = 0, nP = 0; 
-    char s[6];
-
+    int n, input, flag = 0, tot = 0; 
     cin >> n;
-
-    for(int i = 0; i <= n; i++) {
-        cin.getline(s, 6, '\n');
-        if (s[0] == '1') flag ++;
-        if (s[2] == '1') flag ++;
-        if (s[4] == '1') flag ++;
-
-        if (flag >= 2) nP ++;
+    for(int i = 0; i < n; i++) {
+        for (int j = 0; j < 3; j++) {
+            cin >> input; 
+            if (input == 1) flag ++;
+        }
+        if (flag >= 2) tot ++;
         flag = 0;
     }
-
-    printf("%d", nP);
+    cout << tot;
     return 0;
 }
