@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> //TODO FIX THIS
 
 int main() {
     std::string guest, host, pile;
@@ -9,5 +9,5 @@ int main() {
     for(int i = 0; i < gh.length(); i++) {countB += gh[i]; std::cout<<countB<<'\n';}
     if(countA == countB) std::cout<<"YES"; 
     else std::cout<<"NO";
-    return 0;
+    return 0; 
 }
