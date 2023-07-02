@@ -1,18 +1,15 @@
 #include <bits/stdc++.h>
 
 void solve() {
-    int j = 0;
     std::string s;
     std::cin>>s;
-    for(int i = 0; i < s.length();) {
-        std::string a;
-        a.insert(a.end(), s[j]);
-        j++;
-        a.insert(a.end(), s[j]);
-        j++;
-        if(a.compare("-.") == 0) {std::cout<<'1'; i += 2;}
-        else if(a.compare("--") == 0) {std::cout<<'2'; i += 2;}
-        else {std::cout<<'0'; j--; i++;}
+    for(int i = 0; i < s.length(); i ++) {
+        if(s[i] == '.') std::cout<<'0';
+        else {
+            i ++;
+            if(s[i] == '.') std::cout<<'1';
+            else std::cout<<'2';
+        }
     }
 }
 
