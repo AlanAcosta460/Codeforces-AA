@@ -1,7 +1,4 @@
+# Ignore extensionless files (compiled c and c++ files on linux)
 *
-
-!.gitignore
-!*.py
-!*.java
-!*.c
-!*.cpp
+!*.*
+!*/
