@@ -15,8 +15,8 @@ void solve() {
     for (auto &x : A) cin >> x;
     for (auto &x : B) cin >> x;
 
-    if (A.at(k - 1) < B.at(nB - m)) cout << "YES";
-    else cout << "NO";
+    if (A.at(k - 1) < B.at(nB - m)) cout << "YES" << endl;
+    else cout << "NO" << endl;
 }
 
 int main() {
