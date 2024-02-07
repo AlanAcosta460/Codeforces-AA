@@ -1,17 +1,17 @@
 #!/bin/zsh
 
-# Check the input of 2 arguments
-if [ $# -ne 2 ]
+# Check the input of the argument
+if [ $# -ne 1 ]
 then
-    /usr/bin/echo "Usage: ./run.sh <folder> <C++_file_name>"
-    /usr/bin/echo "e.g. ./run.sh 0900 1909A"
+    /usr/bin/echo "Usage: ./run.sh <relative_direction>" 
+    /usr/bin/echo "e.g. ./run.sh ../0900/1909A"
     exit 1
 fi
 
 # Set the paths according to the file
-file_folder=$1
-file_name=$2
-file_path=$file_folder/$file_name.cpp
+file_path=$1
+file_name="${file_path##*/}"
+file_name=${file_name::4}
 
 # Create the file if it doesn't exist with the standard template
 if [ ! -f $file_path ]
