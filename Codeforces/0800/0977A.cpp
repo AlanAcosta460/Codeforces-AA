@@ -1,14 +1,25 @@
 #include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    long long n;
+    int k;
+
+    cin >> n >> k;
+
+    for (int i = 0; i < k; i++) {
+        if (n % 10 == 0) n /= 10;
+        else n--;
+    }
+
+    cout << n;
+}
 
 int main() {
-    long int k;
-    std::string n;
-    std::getline(std::cin, n, ' '); 
-    std::cin>>k;
-    for(int i=0; i<k; i ++) {
-        if(n[n.length()-1] == '0') n.replace(n.begin(), n.end(), std::to_string(stoi(n)/10));
-        else n.replace(n.begin(), n.end(), std::to_string(stoi(n)-1));
-    }
-    std::cout<<n;
-    return 0;
+    std::ios_base::sync_with_stdio(0);
+    std::cin.tie(0);
+    std::cout.tie(0);
+    int tc = 1;
+    // std::cin>>tc;
+    for (int t = 1; t <= tc; t++) solve();
 }
