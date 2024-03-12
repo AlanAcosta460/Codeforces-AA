@@ -1,29 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int n, m;
+int n, m, aux;
 set<int> ans;
 vector<pair<int, char>> tr;
 vector<vector<pair<int, int>>> dp;
 
-int func(int cur, char c, int i) {
+int func(int cur, int i) {
     if (i == m) {
         ans.insert(cur);
         return cur;
     }
 
-    if (c == '0' && dp[i][cur].first != -1) return dp[i][cur].first;
-    if (c == '1' && dp[i][cur].second != -1) return dp[i][cur].second;
+    if (tr[i].second == '0' && dp[i][cur].first != -1) return dp[i][cur].first;
+    if (tr[i].second == '1' && dp[i][cur].second != -1) return dp[i][cur].second;
     
-    if (c == '0') return dp[i][cur].first = func((cur + tr[i].first) % n, tr[i + 1].second, i + 1);
-    if (c == '1') {
-        if (cur - tr[i].first < 0) return dp[i][cur].second = func(n + cur - tr[i].first, tr[i + 1].second, i + 1);
-        else return dp[i][cur].second = func(cur - tr[i].first, tr[i + 1].second, i + 1);
+    if (tr[i].second == '0') return dp[i][cur].first = func((cur + tr[i].first) % n, i + 1);
+    if (tr[i].second == '1') {
+        aux = cur - tr[i].first;
+        if (aux < 0) aux += n;
+        return dp[i][cur].second = func(aux, i + 1);
     }
 
-    dp[i][cur].first = func((cur + tr[i].first) % n, tr[i + 1].second, i + 1);
-    if (cur - tr[i].first < 0) dp[i][cur].second = func(n + cur - tr[i].first, tr[i + 1].second, i + 1);
-    else dp[i][cur].second = func(cur - tr[i].first, tr[i + 1].second, i + 1);
+    dp[i][cur].first = func((cur + tr[i].first) % n, i + 1);
+
+    aux = cur - tr[i].first;
+    if (aux < 0) aux += n;
+    dp[i][cur].second = func(aux, i + 1);
 }
 
 void solve() {
@@ -35,7 +38,7 @@ void solve() {
     for (auto &[r, c] : tr) cin >> r >> c;
     
     ans.clear();
-    func(x - 1, tr[0].second, 0);
+    func(x - 1, 0);
     
     cout << ans.size() << endl;
     for (auto a : ans) cout << (a + 1) << ' ';
